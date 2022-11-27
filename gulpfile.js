@@ -58,7 +58,7 @@ function cleandist() {
 
 function startwatch() {
 	watch('app/**/' + preprocessor + '/**/*', styles);
-    watch('app/**/*.згп', pug);
+    watch('app/**/*', pug);
     watch('app/images/src/**/*', images); 
 }
 
@@ -66,18 +66,18 @@ function buildcopy() {
 	return src([ // Выбираем нужные файлы
 		'app/css/**/*.min.css',
 		'app/images/dest/**/*',
-		'app/**/*.pug',
+		'app/**/*.html',
 		], { base: 'app' }) // Параметр "base" сохраняет структуру проекта при копировании
 	.pipe(dest('dist')) // Выгружаем в папку с финальной сборкой
 }
 
 function pug() {
-    return src('app/*.pug')
+    return src('app/**/*.pug')
     .pipe(gulppug())
     .pipe(size({
         showFile: true
     }))
-    .pipe(dest('dist/'))
+    .pipe(dest('app/'))
     .pipe(browserSync.stream())
 }
 
