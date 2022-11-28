@@ -12,6 +12,15 @@ const cleancss = require('gulp-clean-css');
 const imagecomp = require('compress-images');
 const clean = require('gulp-clean');
 
+function pug() {
+    return src('app/**/*.pug')
+    .pipe(gulppug())
+    .pipe(size({
+        showFile: true
+    }))
+    .pipe(dest('app/'))
+    .pipe(browserSync.stream())
+}
 
 function styles() {
 	return src('app/' + preprocessor + '/main.' + preprocessor + '') // Выбираем источник: "app/sass/main.sass" или "app/less/main.less"
@@ -21,6 +30,17 @@ function styles() {
 	.pipe(cleancss( { level: { 1: { specialComments: 0 } }/* , format: 'beautify' */ } )) // Минифицируем стили
 	.pipe(dest('app/css/')) // Выгрузим результат в папку "app/css/"
 	.pipe(browserSync.stream()) // Сделаем инъекцию в браузер
+}
+
+function scripts() {
+	return src([ // Берем файлы из источников
+		'node_modules/jquery/dist/jquery.min.js', // Пример подключения библиотеки
+		'app/js/app.js', // Пользовательские скрипты, использующие библиотеку, должны быть подключены в конце
+		])
+	.pipe(concat('app.min.js')) // Конкатенируем в один файл
+	.pipe(uglify()) // Сжимаем JavaScript
+	.pipe(dest('app/js/')) // Выгружаем готовый файл в папку назначения
+	.pipe(browserSync.stream()) // Триггерим Browsersync для обновления страницы
 }
 
 function browsersync() {
@@ -59,6 +79,7 @@ function cleandist() {
 function startwatch() {
 	watch('app/**/' + preprocessor + '/**/*', styles);
     watch('app/**/*', pug);
+
     watch('app/images/src/**/*', images); 
 }
 
@@ -69,16 +90,6 @@ function buildcopy() {
 		'app/**/*.html',
 		], { base: 'app' }) // Параметр "base" сохраняет структуру проекта при копировании
 	.pipe(dest('dist')) // Выгружаем в папку с финальной сборкой
-}
-
-function pug() {
-    return src('app/**/*.pug')
-    .pipe(gulppug())
-    .pipe(size({
-        showFile: true
-    }))
-    .pipe(dest('app/'))
-    .pipe(browserSync.stream())
 }
 
 exports.pug = pug;
