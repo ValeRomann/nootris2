@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400700&display=swap')
 $main-fonts: Rubik, sans-serif
 $bg-color: #111
 $main-color: gold
@@ -193,3 +193,182 @@ $main-color: gold
 				cursor: pointer
 				font-size: 18px
 				color: black
+
+@media screen and (max-width: 1300px)
+
+	nav__container
+		padding: 16px
+		height: 100%
+
+		.flex-container
+			gap: 16px
+			flex-wrap: wrap		
+
+			.menu
+				width: 100%
+				
+			.header__cart
+				margin-left: 0
+
+@media screen and (max-width: 1165px) 
+	.nav__container
+		padding: 16px
+
+		.menu
+			width: 100%
+			flex-wrap: wrap
+			justify-content: space-betweens
+			gap:16px    
+    
+	.main__container
+		padding: 24px 16px    
+
+		h1
+			font-size: 124px
+			line-height: 132px    
+
+		.main__ginger
+			transform: scale(0.8)
+			top: auto
+			bottom: 0
+			right: 0   
+
+		.main__nootris
+			transform: scale(0.8)
+			top: auto
+			bottom: 0
+			right: 0    
+    
+		.main__lemon 
+			transform: scale(0.8)
+			bottom: -164px
+			right: 0
+
+@media screen and (max-width: 1030px) 
+	.nav__container .menu
+		order: 3
+
+	.nav__container .menu
+		width: 100%
+
+	.main__container h1
+		font-size: 96px
+		line-height: 100px
+
+	.main__ginger
+		transform: scale(0.6)
+		bottom: -35px
+
+	.main__nootris
+		transform: scale(0.75)
+		bottom: -35px
+    
+	.main__lemon
+		transform: scale(0.6)
+
+	.discount__header
+		font-size: 36px
+		margin-bottom: 85px
+
+	.discount__cards
+		flex-wrap: wrap
+
+@media screen and (max-width: 858px)
+	.header__main .description
+		margin-bottom: 60px    
+
+	.main__ginger
+		transform: scale(0.3)
+		bottom: -120px
+		right: -170px    
+
+	.main__nootris
+		transform: scale(0.25)
+		bottom: -210px
+		right: -60px
+    
+	.main__lemon 
+		transform: scale(0.3)
+		bottom: -180px
+		right: -160px	
+
+	.discount__container
+		padding: 32px 16px    
+    
+		.discount__header
+			margin-bottom: 48px    
+    
+		.discount__card:nth-last-child(2)
+			font-size: 18px
+			line-height: 20px
+			margin-bottom: 32px    
+
+		.discount__card:nth-last-child(2) .yellow
+			font-size: 18px
+			line-height: 20px    
+    
+		.discount__card:nth-last-child(2)  img
+			transform: rotate(-90deg) scale(1.5) translateY(2px)
+			margin-bottom: 0    
+
+		.discount__card img
+			margin-bottom: 12px    
+
+@media screen and (max-width: 790px) 
+	.nav__container .menu
+		flex-direction: column
+		order: 3
+    
+	.main__container h1
+		font-size: 72px
+		line-height: 76px
+		margin-bottom: 8px    
+
+	.main__container .description
+		font-size: 18px    
+
+	.main__container h3
+		font-size: 18px    
+    
+	.discount__header 
+		font-size: 24px
+		margin-bottom: 24px    
+
+	.discount__price 
+		margin-bottom: 24px    
+
+	.discount__cards 
+		flex-direction: column
+		margin-bottom: 24px
+
+@media screen and (max-width: 532px)
+	.nav__container .flex-container
+		gap: 15px
+
+		.menu
+			width: 100%
+			flex-shrink: 1
+    
+		.tel
+			flex-shrink: 0
+
+	.main__container h1
+		font-size: 48px
+		line-height: 50px
+    
+	.header__main .description
+		margin-bottom: 32px
+
+	.main__container img
+		display: none
+
+	.discount__header
+		font-size: 18px
+    
+	.discount__price
+		font-size: 32px    
+
+	.price__low::after
+		width: 80px
+		left: -12px
+		top: 13px 
