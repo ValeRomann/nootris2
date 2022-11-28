@@ -2,6 +2,9 @@ doctype html
 html(lang="ru")
   head
     meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="css/app.min.css")
     title= "Nootris"
   body.page
     header(class="header page__header")
@@ -25,8 +28,8 @@ html(lang="ru")
             div(class="menu__item tel")
               a(href="tel:88006000990" class="menu__link") 8 (800) 600-09-90
             div.header__cart
-              a(href="#" class="menu__link") Личный кабинет
-                img(src="images/dest/svg/nav/logo.svg" alt="")
+              a(href="#" class="menu__link")
+                img(src="images/dest/svg/nav/cart.svg" alt="")
               span.cart__product-number 1
       div.header__main
         div.main__container
