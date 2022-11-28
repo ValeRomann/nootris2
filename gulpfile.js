@@ -33,12 +33,12 @@ function styles() {
 }
 
 function scripts() {
-	return src( // Берем файлы из источников
+	return src([ // Берем файлы из источников
 		'app/js/app.js', // Пользовательские скрипты, использующие библиотеку, должны быть подключены в конце
-		{allowEmpty: true})
+		])
 	.pipe(concat('app.min.js')) // Конкатенируем в один файл
 	.pipe(uglify()) // Сжимаем JavaScript
-	.pipe(dest('app/js/',{allowEmpty: true})) // Выгружаем готовый файл в папку назначения
+	.pipe(dest('app/js/')) // Выгружаем готовый файл в папку назначения
 	.pipe(browserSync.stream()) // Триггерим Browsersync для обновления страницы
 }
 
@@ -85,6 +85,7 @@ function startwatch() {
 function buildcopy() {
 	return src([ // Выбираем нужные файлы
 		'app/css/**/*.min.css',
+		'app/js/**/*.min.js',
 		'app/images/dest/**/*',
 		'app/**/*.html',
 		], { base: 'app' }) // Параметр "base" сохраняет структуру проекта при копировании
