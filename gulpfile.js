@@ -37,7 +37,7 @@ function scripts() {
 		'app/js/app.js', // Пользовательские скрипты, использующие библиотеку, должны быть подключены в конце
 		])
 	.pipe(concat('app.min.js')) // Конкатенируем в один файл
-	.pipe(uglify()) // Сжимаем JavaScript
+	//.pipe(uglify()) // Сжимаем JavaScript
 	.pipe(dest('app/js/')) // Выгружаем готовый файл в папку назначения
 	.pipe(browserSync.stream()) // Триггерим Browsersync для обновления страницы
 }
