@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400700&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap')
 $main-fonts: Rubik, sans-serif
 $bg-color: #111
 $main-color: gold
@@ -195,8 +195,7 @@ $main-color: gold
 				color: black
 
 @media screen and (max-width: 1300px)
-
-	nav__container
+	.header .header__nav .nav__container
 		padding: 16px
 		height: 100%
 
@@ -210,15 +209,12 @@ $main-color: gold
 			.header__cart
 				margin-left: 0
 
-@media screen and (max-width: 1165px) 
-	.nav__container
-		padding: 16px
-
-		.menu
+@media screen and (max-width: 1165px)	
+	.nav__container .menu
 			width: 100%
 			flex-wrap: wrap
 			justify-content: space-betweens
-			gap:16px    
+			gap:16px
     
 	.main__container
 		padding: 24px 16px    
@@ -247,26 +243,24 @@ $main-color: gold
 @media screen and (max-width: 1030px) 
 	.nav__container .menu
 		order: 3
-
-	.nav__container .menu
 		width: 100%
 
 	.main__container h1
 		font-size: 96px
 		line-height: 100px
 
-	.main__ginger
+	.main__container .main__ginger
 		transform: scale(0.6)
 		bottom: -35px
 
-	.main__nootris
+	.main__container .main__nootris
 		transform: scale(0.75)
 		bottom: -35px
     
-	.main__lemon
+	.main__container .main__lemon
 		transform: scale(0.6)
 
-	.discount__header
+	.main__discount .discount__container .discount__header
 		font-size: 36px
 		margin-bottom: 85px
 
@@ -275,44 +269,44 @@ $main-color: gold
 
 @media screen and (max-width: 858px)
 	.header__main .description
-		margin-bottom: 60px    
+		margin-bottom: 60px
 
-	.main__ginger
+	.main__container .main__ginger
 		transform: scale(0.3)
 		bottom: -120px
-		right: -170px    
+		right: -170px
 
-	.main__nootris
+	.main__container .main__nootris
 		transform: scale(0.25)
 		bottom: -210px
 		right: -60px
     
-	.main__lemon 
+	.main__container .main__lemon 
 		transform: scale(0.3)
 		bottom: -180px
-		right: -160px	
+		right: -160px
 
-	.discount__container
-		padding: 32px 16px    
+	.main__discount .discount__container
+		padding: 32px 16px
     
 		.discount__header
-			margin-bottom: 48px    
+			margin-bottom: 48px
     
-		.discount__card:nth-last-child(2)
+		.discount__cards .discount__card:nth-last-child(2)
 			font-size: 18px
 			line-height: 20px
-			margin-bottom: 32px    
+			margin-bottom: 32px
 
-		.discount__card:nth-last-child(2) .yellow
+		.discount__cards .discount__card:nth-last-child(2) .yellow
 			font-size: 18px
-			line-height: 20px    
+			line-height: 20px
     
-		.discount__card:nth-last-child(2)  img
+		.discount__cards .discount__card:nth-last-child(2)  img
 			transform: rotate(-90deg) scale(1.5) translateY(2px)
 			margin-bottom: 0    
 
-		.discount__card img
-			margin-bottom: 12px    
+		.discount__cards .discount__card img
+			margin-bottom: 12px
 
 @media screen and (max-width: 790px) 
 	.nav__container .menu
@@ -330,11 +324,11 @@ $main-color: gold
 	.main__container h3
 		font-size: 18px    
     
-	.discount__header 
+	.main__discount .discount__container .discount__header 
 		font-size: 24px
 		margin-bottom: 24px    
 
-	.discount__price 
+	.main__discount .discount__container .discount__price 
 		margin-bottom: 24px    
 
 	.discount__cards 
@@ -362,13 +356,13 @@ $main-color: gold
 	.main__container img
 		display: none
 
-	.discount__header
+	.main__discount .discount__container .discount__header
 		font-size: 18px
     
-	.discount__price
+	.main__discount .discount__container .discount__price
 		font-size: 32px    
 
-	.price__low::after
+	.main__discount .discount__container .discount__price .price__low::after
 		width: 80px
 		left: -12px
 		top: 13px 
