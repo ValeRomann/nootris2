@@ -2,6 +2,61 @@ doctype html
 html(lang="ru")
   head
     meta(charset="utf-8")
-    title= "Учимся работать с шаблонизатором Pug"
-  body
-      h1 kek
+    title= "Nootris"
+  body.page
+    header(class="header page__header")
+      nav.header__nav
+        div.nav__container
+          div.flex-container
+            div.header__logo
+              a(href="#" class="menu__link")
+                img(src="images/dest/svg/nav/logo.svg" alt="")
+            ul.menu
+              li.menu__item
+                a(href="#" class="menu__link") FAQ
+              li.menu__item
+                a(href="#" class="menu__link") Оплата и доставка
+              li.menu__item
+                a(href="#" class="menu__link") Возврат
+              li.menu__item
+                a(href="#" class="menu__link") Исследования
+              li.menu__item
+                a(href="#" class="menu__link") Личный кабинет
+            div(class="menu__item tel")
+              a(href="tel:88006000990" class="menu__link") 8 (800) 600-09-90
+            div.header__cart
+              a(href="#" class="menu__link") Личный кабинет
+                img(src="images/dest/svg/nav/logo.svg" alt="")
+              span.cart__product-number 1
+      div.header__main
+        div.main__container
+          h1 АКТИВИРУЙ ИММУНИТЕТ!
+          p.description Всего пять секунд в день помогут укрепить иммунитет и повысить защитные силы организма
+          h3 NOOTRIS ПОМОГАЕТ
+          p.description-small Вашему организму во время пандемии и сезонных простуд
+          img(src="images/dest/svg/product/ginger.svg" alt="Ginger" class="main__ginger")
+          img(src="images/dest/svg/product/nootris.svg" alt="Nootris" class="main__nootris")
+          img(src="images/dest/svg/product/lemon.svg" alt="Lemon" class="main__lemon")
+    main(class="main main__discount")
+      div.discount__container
+        h2.discount__header
+          span ПОЛУЧИ ЗАЩИТУ ИММУНИТЕТА
+          span.yellow СО СКИДКОЙ -15% ПЕРВЫМ!
+        p.discount__price 
+          span.price__low 750₽
+          span 690₽
+        div.discount__cards
+          figure.discount__card
+            img(src="images/dest/svg/product/ginger.svg" alt="Vorus")
+            figcaption Содержит
+              span.yellow имбирь
+          figure.discount__card
+            img(src="images/dest/svg/product/nootris.svg" alt="Nootris")
+            figcaption + Бесплатная доставка
+              span.yellow Специальная цена
+          figure.discount__card
+            img(src="images/dest/svg/product/ginger.svg" alt="Vorus")
+            figcaption Нейтрализует
+              span.yellow вирусы
+        div.discount__buy
+          button Оформить заказ!

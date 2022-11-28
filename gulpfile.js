@@ -3,6 +3,7 @@ let preprocessor = 'sass';
 const { src, dest, parallel, series, watch, gulp } = require('gulp');
 const size = require('gulp-size');
 const gulppug = require('gulp-pug');
+const prettify = require('gulp-html-prettify');
 const browserSync = require('browser-sync').create();
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify-es').default;
@@ -15,9 +16,8 @@ const clean = require('gulp-clean');
 function pug() {
     return src('app/**/*.pug')
     .pipe(gulppug())
-    .pipe(size({
-        showFile: true
-    }))
+	.pipe(prettify({indent_char: '', indent_size: 2}))
+    .pipe(size({ showFile: true }))
     .pipe(dest('app/'))
     .pipe(browserSync.stream())
 }
@@ -33,13 +33,12 @@ function styles() {
 }
 
 function scripts() {
-	return src([ // Берем файлы из источников
-		'node_modules/jquery/dist/jquery.min.js', // Пример подключения библиотеки
+	return src( // Берем файлы из источников
 		'app/js/app.js', // Пользовательские скрипты, использующие библиотеку, должны быть подключены в конце
-		])
+		{allowEmpty: true})
 	.pipe(concat('app.min.js')) // Конкатенируем в один файл
 	.pipe(uglify()) // Сжимаем JavaScript
-	.pipe(dest('app/js/')) // Выгружаем готовый файл в папку назначения
+	.pipe(dest('app/js/',{allowEmpty: true})) // Выгружаем готовый файл в папку назначения
 	.pipe(browserSync.stream()) // Триггерим Browsersync для обновления страницы
 }
 
@@ -77,9 +76,9 @@ function cleandist() {
 }
 
 function startwatch() {
-	watch('app/**/' + preprocessor + '/**/*', styles);
     watch('app/**/*', pug);
-
+	watch('app/**/' + preprocessor + '/**/*', styles);
+	watch(['app/**/*.js', '!app/**/*.min.js'], scripts);
     watch('app/images/src/**/*', images); 
 }
 
@@ -92,10 +91,12 @@ function buildcopy() {
 	.pipe(dest('dist')) // Выгружаем в папку с финальной сборкой
 }
 
-exports.pug = pug;
+
 exports.browsersync = browsersync;
+exports.pug = pug;
 exports.styles = styles;
+exports.scripts = scripts;
 exports.images = images;
 exports.cleanimg = cleanimg;
-exports.build = series(pug, cleandist, styles, images, buildcopy);
-exports.default = parallel(pug, styles, browsersync, startwatch);
+exports.build = series(cleandist, pug, styles, scripts, images, buildcopy);
+exports.default = parallel(pug, styles, scripts, browsersync, startwatch);
